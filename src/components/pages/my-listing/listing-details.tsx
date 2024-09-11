@@ -73,7 +73,7 @@ const ListingDetails = () => {
               Submit an Offer
             </Button>
           </div>
-          <p className="flex items-center text-accent-purple text-body gap-1">
+          <p className="flex items-center text-accent-purple text-body gap-1 cursor-pointer hover:font-semibold">
             <span>
               <ShareIcon />
             </span>
