@@ -7,7 +7,7 @@ import logo from "../../assets/logo/logo.png";
 
 const Navbar = () => {
   return (
-    <nav className="flex items-center justify-between px-8.5 py-1.5 shadow-sm">
+    <nav className="flex items-center justify-between px-8.5 py-1.5 border-b border-black/25">
       <div className="flex gap-14">
         <a
           href="/"

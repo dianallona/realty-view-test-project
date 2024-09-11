@@ -15,13 +15,22 @@ module.exports = {
     },
     extend: {
       colors: {
+        logo: "#191E3B",
         gray: {
+          25: "#FAFAFA",
           50: "#F2F2F2",
           400: "#A1A1A1",
           700: "#374151",
           800: "#3C3C3C",
         },
-        logo: "#191E3B",
+        zinc: { 600: "#52525B" },
+        "accent-purple": "#4C42D7",
+        tokens: {
+          secondary: "#6B7280",
+          tertiary: "#9CA3AF",
+        },
+        "input-field": "#F1F5F9",
+        "input-placeholder": "rgba(24, 41, 82, 0.4)",
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
@@ -68,6 +77,7 @@ module.exports = {
         caption: "12px",
         body: "14px",
         xl: "16px",
+        heading: "18px",
       },
       keyframes: {
         "accordion-down": {
@@ -85,6 +95,12 @@ module.exports = {
       },
       padding: {
         8.5: "34px",
+        11.5: "46px",
+        17: "68px",
+        18: "72px",
+        19: "76px",
+        22: "88px",
+        23: "92px",
       },
       width: {
         5.5: "22px",
