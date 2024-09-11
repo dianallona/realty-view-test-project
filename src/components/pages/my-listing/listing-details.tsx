@@ -27,7 +27,7 @@ const carouselImages = [
 
 const ListingDetails = () => {
   return (
-    <section className="px-16 py-6 grid gap-5">
+    <section className="px-16 py-6 gap-5 hidden md:grid">
       <div>
         <div className="flex justify-between px-8 pt-3">
           <div>

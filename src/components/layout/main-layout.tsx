@@ -4,7 +4,7 @@ import Navbar from "./navbar";
 
 const MainLayout: FC<PropsWithChildren> = ({ children }) => {
   return (
-    <main>
+    <main className="min-w-screen h-screen">
       <Progress value={100 / 8} />
       <Navbar />
       {children}
