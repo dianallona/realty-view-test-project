@@ -19,10 +19,13 @@ module.exports = {
         gray: {
           25: "#FAFAFA",
           50: "#F2F2F2",
+          200: "#E5E7EB",
+          300: "#D1D5DB",
           400: "#A1A1A1",
           700: "#374151",
           800: "#3C3C3C",
         },
+        indigi: { 500: "#6366F1" },
         zinc: { 600: "#52525B" },
         "accent-purple": "#4C42D7",
         tokens: {
@@ -78,6 +81,7 @@ module.exports = {
         body: "14px",
         xl: "16px",
         heading: "18px",
+        "heading-2": "22px",
       },
       keyframes: {
         "accordion-down": {
