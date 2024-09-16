@@ -33,6 +33,7 @@ module.exports = {
           tertiary: "#9CA3AF",
         },
         "input-field": "#F1F5F9",
+        "input-label": "#8E9CB2",
         "input-placeholder": "rgba(24, 41, 82, 0.4)",
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
@@ -82,6 +83,7 @@ module.exports = {
         xl: "16px",
         heading: "18px",
         "heading-2": "22px",
+        "heading-3": "24px",
       },
       keyframes: {
         "accordion-down": {
@@ -99,6 +101,17 @@ module.exports = {
       },
       padding: {
         8.5: "34px",
+        10.5: "42px",
+        11.5: "46px",
+        17: "68px",
+        18: "72px",
+        19: "76px",
+        22: "88px",
+        23: "92px",
+      },
+      margin: {
+        8.5: "34px",
+        10.5: "42px",
         11.5: "46px",
         17: "68px",
         18: "72px",
@@ -108,9 +121,14 @@ module.exports = {
       },
       width: {
         5.5: "22px",
+        8.5: "34px",
       },
       boxShadow: {
         sm: "0px 1px 1px 0px rgba(0, 0, 0, 0.25)",
+        card: "2px -2px 6px 0px rgba(0, 0, 0, 0.05), -2px 2px 6px 0px rgba(0, 0, 0, 0.05)",
+      },
+      gap: {
+        4.5: "18px",
       },
     },
   },
