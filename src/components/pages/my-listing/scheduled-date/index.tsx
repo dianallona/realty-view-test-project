@@ -8,9 +8,8 @@ import {
 } from "date-fns";
 import { useState } from "react";
 import { Row, RowProps } from "react-day-picker";
-import { ReactComponent as ChevronRight } from "../../../../assets/icons/chevron-right.svg";
 import { cn } from "../../../../lib/utils";
-import { Button, buttonVariants } from "../../../ui/button";
+import { buttonVariants } from "../../../ui/button";
 import { Calendar } from "../../../ui/calendar";
 import ListingImages from "../listing-details/listing-images";
 import TimeSchedule from "./time-schedule";
@@ -57,61 +56,68 @@ const ScheduledDate = () => {
   };
 
   return (
-    <div
-      className={"my-5 mx-10.5 shadow-card p-5 rounded-xl h-fit"}
-      style={{
-        boxShadow:
-          "2px -2px 6px 0px rgba(0, 0, 0, 0.05), -2px 2px 6px 0px rgba(0, 0, 0, 0.05)",
-      }}
-    >
-      <ListingImages />
-      <div className="flex justify-between py-3">
-        <p className="text-tokens-tertiary text-body">Scheduled Date</p>
-        <p className="text-gray-800 text-body">
-          {format(currentWeek, "EEEE, MMMM do yyyy")}
-        </p>
+    <div className="bg-white">
+      <div
+        className="mx-0 pt-10 px-4 md:mt-5 xl:my-5 md:mx-5 xl:mx-10.5 md:p-5 rounded-xl h-fit !bg-white"
+        style={{
+          boxShadow:
+            "2px -2px 6px 0px rgba(0, 0, 0, 0.05), -2px 2px 6px 0px rgba(0, 0, 0, 0.05)",
+        }}
+      >
+        <ListingImages />
+
+        <div className="bg-gray-25 rounded-xl p-3 border border-gray-200">
+          <div className="bg-white rounded-xl p-3 border border-gray-200">
+            <div className="flex flex-col xl:flex-row justify-between gap-2">
+              <p className="text-tokens-tertiary text-body">Scheduled Date</p>
+              <p className="text-gray-800 text-body">
+                {format(currentWeek, "EEEE, MMMM do yyyy")}
+              </p>
+            </div>
+            <hr className="bg-gray-200 my-2" />
+            <div className="flex justify-between items-center my-2 border border-gray-200 rounded-lg">
+              {/* <Button
+                variant="ghost"
+                onClick={handlePreviousWeek}
+                className="!w-fit !h-fit !p-1"
+              >
+                <ChevronRight width={24} height={24} className="rotate-180" />
+              </Button> */}
+              <Calendar
+                className="flex-1 px-2 py-4"
+                classNames={{
+                  day: cn(
+                    buttonVariants({ variant: "ghost" }),
+                    "w-full p-0 font-normal aria-selected:opacity-100"
+                  ),
+                }}
+                components={{ Caption, Row: CurrentWeekRow }}
+                mode="single"
+                defaultMonth={currentWeek}
+                selected={currentWeek}
+                onMonthChange={handleMonthChange}
+                month={currentWeek}
+                modifiers={{
+                  disabled: { before: new Date() },
+                }}
+                disableNavigation
+                showOutsideDays
+                onDayClick={(e) => {
+                  setCurrentWeek(e);
+                }}
+              />
+              {/* <Button
+                variant="ghost"
+                onClick={handleNextWeek}
+                className="!w-fit !h-fit !p-1"
+              >
+                <ChevronRight width={24} height={24} />
+              </Button> */}
+            </div>
+            <TimeSchedule date={currentWeek} />
+          </div>
+        </div>
       </div>
-      <hr className="bg-gray-200 my-2" />
-      <div className="flex justify-between items-center py-1 px-2 my-2 border border-gray-200 rounded-lg">
-        <Button
-          variant="ghost"
-          onClick={handlePreviousWeek}
-          className="!w-fit !h-fit !p-1"
-        >
-          <ChevronRight width={24} height={24} className="rotate-180" />
-        </Button>
-        <Calendar
-          className="flex-1"
-          classNames={{
-            day: cn(
-              buttonVariants({ variant: "ghost" }),
-              "w-full p-0 font-normal aria-selected:opacity-100"
-            ),
-          }}
-          components={{ Caption, Row: CurrentWeekRow }}
-          mode="single"
-          defaultMonth={currentWeek}
-          selected={currentWeek}
-          onMonthChange={handleMonthChange}
-          month={currentWeek}
-          modifiers={{
-            disabled: { before: new Date() },
-          }}
-          disableNavigation
-          showOutsideDays
-          onDayClick={(e) => {
-            setCurrentWeek(e);
-          }}
-        />
-        <Button
-          variant="ghost"
-          onClick={handleNextWeek}
-          className="!w-fit !h-fit !p-1"
-        >
-          <ChevronRight width={24} height={24} />
-        </Button>
-      </div>
-      <TimeSchedule date={currentWeek} />
     </div>
   );
 };

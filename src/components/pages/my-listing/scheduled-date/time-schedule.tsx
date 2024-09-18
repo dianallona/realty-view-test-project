@@ -59,9 +59,9 @@ const TimeSchedule: FC<TTimeSchedule> = ({ date }) => {
             <p className="text-tokens-secondary text-body">
               {value.timeOfTheDay}
             </p>
-            <div className="grid grid-cols-5 auto-rows-max gap-4 mt-2">
+            <div className="flex flex-wrap gap-4 mt-2">
               {timeRange.map((range) => (
-                <span className="text-center py-1 px-2 border border-gray-300 rounded-lg text-body cursor-pointer hover:bg-accent-purple hover:text-white">
+                <span className="whitespace-nowrap w-fit text-center py-1 px-2 border border-gray-300 rounded-lg text-body cursor-pointer hover:bg-accent-purple hover:text-white">
                   {format(range, "h:mm aa")}
                 </span>
               ))}

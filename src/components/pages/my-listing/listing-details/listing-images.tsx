@@ -1,3 +1,4 @@
+import { FC } from "react";
 import { ReactComponent as BookmarkIcon } from "../../../../assets/icons/bookmark.svg";
 import { ReactComponent as MoreVerticalIcon } from "../../../../assets/icons/more-vertical.svg";
 import { ReactComponent as ShareIcon } from "../../../../assets/icons/share.svg";
@@ -23,15 +24,18 @@ const carouselImages = [
   },
 ];
 
-const ListingImages = () => {
+export type TListingImages = {
+  onClose?: () => void;
+};
+const ListingImages: FC<TListingImages> = ({ onClose }) => {
   return (
     <div>
-      <div className="flex justify-between px-8 pt-3">
+      <div className="flex justify-between">
         <div>
-          <h1 className="text-gray-800 text-heading-2 font-bold">
+          <h1 className="text-gray-800 text-heading-2 font-bold xl:text-heading-3">
             901 Stillwater Dr
           </h1>
-          <p className="text-body text-gray-600">Miami Beach, FL 33141</p>
+          <p className="text-body text-gray-650">Miami Beach, FL 33141</p>
         </div>
         <div className="flex gap-3 items-center">
           <div className="p-1 cursor-pointer hover:bg-gray-100 rounded-full">
@@ -40,7 +44,10 @@ const ListingImages = () => {
           <div className="p-1 cursor-pointer hover:bg-gray-100 rounded-full">
             <MoreVerticalIcon />
           </div>
-          <div className="p-1 cursor-pointer hover:bg-gray-100 rounded-full">
+          <div
+            className="p-1 cursor-pointer hover:bg-gray-100 rounded-full"
+            onClick={onClose}
+          >
             <XIcon />
           </div>
         </div>
@@ -58,8 +65,8 @@ const ListingImages = () => {
           ))}
         </CarouselContent>
       </Carousel>
-      <div className="flex justify-between pb-2">
-        <div className="flex gap-4">
+      <div className="flex flex-col xl:flex-row justify-between pb-2 gap-5 xl:gap-2.5">
+        <div className="flex flex-col xl:flex-row gap-5 xl:gap-4">
           <Button>Schedule a Showing</Button>
           <Button
             variant="outline"
@@ -69,7 +76,7 @@ const ListingImages = () => {
             Submit an Offer
           </Button>
         </div>
-        <p className="flex items-center text-accent-purple text-body gap-1 cursor-pointer hover:font-semibold">
+        <p className="flex items-center mx-auto xl:mx-0 text-accent-purple text-body gap-1 cursor-pointer hover:font-semibold">
           <span>
             <ShareIcon />
           </span>
