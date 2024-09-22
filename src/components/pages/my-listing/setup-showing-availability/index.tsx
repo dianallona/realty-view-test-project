@@ -39,7 +39,7 @@ const daysOfTheWeek = [
   "Sunday",
 ];
 
-const ShowingAvailability = () => {
+const SetupShowingAvailability = () => {
   const state = useBoundStore();
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -49,11 +49,9 @@ const ShowingAvailability = () => {
     },
   });
 
-  function onSubmit(values: z.infer<typeof formSchema>) {
-    // Do something with the form values.
-    // ✅ This will be type-safe and validated.
-    console.log(values);
-  }
+  const onSubmit = (values: z.infer<typeof formSchema>) => {
+    state.setCurrentPage("setup-showing-instructions");
+  };
 
   const handleOnClickBack = () => {
     state.setCurrentPage("setup-listing");
@@ -62,14 +60,14 @@ const ShowingAvailability = () => {
     <Form {...form}>
       <form
         onSubmit={form.handleSubmit(onSubmit)}
-        className="px-5 md:px-7 pb-4"
+        className="px-5 md:px-7 xl:px-16 2xl:px-36 pb-4"
       >
-        <h1 className="flex items-center tracking-[-0.2px] gap-2.5 text-heading-2 xl:text-heading-4 font-bold py-4 md:pt-14 border-b border-gray-100">
+        <h1 className="flex items-center tracking-[-0.2px] gap-2.5 text-heading-2 xl:text-heading-3 font-bold py-4 md:pt-14 border-b border-gray-100">
           <span
             className="hidden md:block cursor-pointer hover:scale-110"
             onClick={handleOnClickBack}
           >
-            <ArrowLeftIcon width={24} height={24} />
+            <ArrowLeftIcon width={20} height={20} />
           </span>
           Setup your showing availability
         </h1>
@@ -117,7 +115,6 @@ const ShowingAvailability = () => {
                           className="w-8.5 h-4"
                           checked={field.value === value}
                           onCheckedChange={() => {
-                            console.log("here", value);
                             form.setValue("schedule", value);
                             form.trigger();
                           }}
@@ -166,4 +163,4 @@ const ShowingAvailability = () => {
   );
 };
 
-export default ShowingAvailability;
+export default SetupShowingAvailability;

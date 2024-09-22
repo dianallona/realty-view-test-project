@@ -9,7 +9,7 @@ import logo from "../../assets/logo/logo.png";
 const Navbar = () => {
   return (
     <nav>
-      <div className="md:hidden py-1.5 px-4 flex items-center justify-between">
+      <div className="md:hidden border-b border-black/5 py-1.5 px-4 flex items-center justify-between">
         <img
           src={logo}
           alt="logo"
@@ -17,7 +17,7 @@ const Navbar = () => {
         />
         <div className="flex gap-2 items-center">
           <BellIcon className="m-2.5 hover:scale-110 cursor-pointer" />
-          <div className="bg-gray-50 w-[1px] h-9" />
+          <div className="bg-primary-gray-50 w-[1px] h-9" />
           <img
             src={profileImg}
             alt="profile-img"
@@ -54,7 +54,7 @@ const Navbar = () => {
             <MessagesSquareIcon className="m-2.5 hover:scale-110 cursor-pointer" />
             <BellIcon className="m-2.5 hover:scale-110 cursor-pointer" />
           </div>
-          <div className="border-r h-9 border-gray-50" />
+          <div className="border-r h-9 border-primary-gray-50" />
           <div className="flex items-center group cursor-pointer pl-2 hover:bg-gray-100 rounded-sm">
             <img
               src={profileImg}

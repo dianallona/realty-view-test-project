@@ -65,7 +65,7 @@ const ListingImages: FC<TListingImages> = ({ onClose }) => {
           ))}
         </CarouselContent>
       </Carousel>
-      <div className="flex flex-col xl:flex-row justify-between pb-2 gap-5 xl:gap-2.5">
+      <div className="flex flex-col xl:flex-row justify-between pb-2 gap-5 xl:pb-5 xl:gap-2.5">
         <div className="flex flex-col xl:flex-row gap-5 xl:gap-4">
           <Button>Schedule a Showing</Button>
           <Button

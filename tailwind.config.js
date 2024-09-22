@@ -18,7 +18,7 @@ module.exports = {
         logo: "#191E3B",
         gray: {
           25: "#FAFAFA",
-          50: "#F2F2F2",
+          50: "#F9FAFB",
           100: "#EBEBEB",
           200: "#E5E7EB",
           300: "#D1D5DB",
@@ -52,6 +52,7 @@ module.exports = {
         primary: {
           DEFAULT: "hsl(var(--primary))",
           foreground: "hsl(var(--primary-foreground))",
+          gray: { 50: "#F2F2F2" },
         },
         secondary: {
           DEFAULT: "hsl(var(--secondary))",

@@ -27,7 +27,6 @@ const formSchema = z.object({
   password: z.string().min(4),
   licenseState: z.string(),
   licenseType: z.string(),
-  howDidYouHearAboutUs: z.string(),
 });
 
 const SetupListing = () => {
@@ -42,15 +41,15 @@ const SetupListing = () => {
     },
   });
 
-  function onSubmit(values: z.infer<typeof formSchema>) {
-    console.log("im here");
-    state.setCurrentPage("showing-availability");
-  }
+  const onSubmit = (values: z.infer<typeof formSchema>) => {
+    state.setCurrentPage("setup-showing-availability");
+  };
+
   return (
     <Form {...form}>
       <form
         onSubmit={form.handleSubmit(onSubmit)}
-        className="bg-gray-25 flex flex-col gap-4 md:px-5 md:pt-14 px-4 pt-5 pb-10 md:pb-0 md:mb-0 mb-16 xl:pt-14 xl:px-36"
+        className="px-5 md:px-7 xl:px-16 2xl:px-36 bg-gray-25 flex flex-col gap-4 md:pt-14 pt-5 pb-10 md:pb-0 md:mb-0 mb-16 xl:pt-14"
       >
         <div className="grid gap-4 border-b border-gray-100 pb-4">
           <div>

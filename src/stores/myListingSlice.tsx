@@ -1,7 +1,12 @@
 import { StateCreator } from "zustand";
-import { devtools, persist } from "zustand/middleware";
+import { devtools } from "zustand/middleware";
 
-type TProgressState = "setup-listing" | "showing-availability";
+type TProgressState =
+  | "setup-listing"
+  | "setup-showing-availability"
+  | "setup-showing-instructions"
+  | "procurement-agreement"
+  | "contact-info";
 
 export type TMyListingSlice = {
   progressState: TProgressState;
@@ -12,13 +17,8 @@ export const createMyListingSlice: StateCreator<
   TMyListingSlice,
   [],
   [["zustand/devtools", never], ["zustand/persist", TMyListingSlice]]
-> = devtools(
-  persist(
-    (set) => ({
-      progressState: "setup-listing",
-      setCurrentPage: (progressState) =>
-        set((state) => ({ ...state, progressState })),
-    }),
-    { name: "myListing" }
-  )
-);
+> = devtools((set) => ({
+  progressState: "setup-listing",
+  setCurrentPage: (progressState) =>
+    set((state) => ({ ...state, progressState })),
+}));
