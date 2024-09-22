@@ -16,6 +16,9 @@ module.exports = {
     extend: {
       colors: {
         logo: "#191E3B",
+        neutral: {
+          500: "#696783",
+        },
         gray: {
           25: "#FAFAFA",
           50: "#F9FAFB",
@@ -33,6 +36,9 @@ module.exports = {
           100: "#DCFCE7",
           600: "#16A34A",
         },
+        skeleton: "#DEDEDE",
+        brand: { 25: "#EEEDFB" },
+        "secondary-border": "#E0E0EB",
         success: "#7DDAA4",
         indigo: { 500: "#6366F1" },
         zinc: { 600: "#52525B" },

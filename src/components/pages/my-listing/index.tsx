@@ -5,6 +5,8 @@ import { useBoundStore } from "../../../stores/useBoundStores";
 import { Button } from "../../ui/button";
 import { Drawer, DrawerContent, DrawerTrigger } from "../../ui/drawer";
 import { ScrollArea } from "../../ui/scroll-area";
+import ContactInfo from "./contact-info";
+import ListingAgent from "./listing-agent";
 import ListingDetails from "./listing-details";
 import ProcurementAgreement from "./procurement-agreement";
 import ProcurementAgreementListing from "./procurement-agreement-listing";
@@ -53,6 +55,12 @@ const MyListing = () => {
             <ProcurementAgreementListing />
           </>
         )}
+        {state.progressState === "contact-info" && (
+          <>
+            <ContactInfo />
+            <ListingAgent />
+          </>
+        )}
       </div>
       <div className="md:hidden">
         <Drawer
@@ -90,6 +98,7 @@ const MyListing = () => {
               <ProcurementAgreement />
             </>
           )}
+          {state.progressState === "contact-info" && <ContactInfo />}
           <DrawerContent
             className="h-[calc(100vh-24px)] mx-2"
             style={{
@@ -110,6 +119,7 @@ const MyListing = () => {
               {state.progressState === "procurement-agreement" && (
                 <ProcurementAgreementListing />
               )}
+              {state.progressState === "contact-info" && <ListingAgent />}
             </ScrollArea>
           </DrawerContent>
         </Drawer>
