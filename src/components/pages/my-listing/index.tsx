@@ -4,7 +4,7 @@ import { ReactComponent as EyeLightIcon } from "../../../assets/icons/eye-light.
 import { useBoundStore } from "../../../stores/useBoundStores";
 import { Button } from "../../ui/button";
 import { Drawer, DrawerContent, DrawerTrigger } from "../../ui/drawer";
-import { ScrollArea } from "../../ui/scroll-area";
+import ConfirmCompanyBrokerage from "./confirm-company-brokerage";
 import ContactInfo from "./contact-info";
 import ListingAgent from "./listing-agent";
 import ListingDetails from "./listing-details";
@@ -29,7 +29,7 @@ const MyListing = () => {
   };
 
   return (
-    <section className="h-[calc(100vh-61px)] w-full bg-gray-25">
+    <section className="h-[calc(100vh-61px)] w-full bg-gray-25 overflow-auto">
       <div className="hidden md:grid md:grid-cols-2 h-full">
         {state.progressState === "setup-listing" && (
           <>
@@ -58,6 +58,12 @@ const MyListing = () => {
         {state.progressState === "contact-info" && (
           <>
             <ContactInfo />
+            <ListingAgent />
+          </>
+        )}
+        {state.progressState === "confirm-company-brokerage" && (
+          <>
+            <ConfirmCompanyBrokerage />
             <ListingAgent />
           </>
         )}
@@ -99,6 +105,11 @@ const MyListing = () => {
             </>
           )}
           {state.progressState === "contact-info" && <ContactInfo />}
+          {state.progressState === "confirm-company-brokerage" && (
+            <>
+              <ConfirmCompanyBrokerage />
+            </>
+          )}
           <DrawerContent
             className="h-[calc(100vh-24px)] mx-2"
             style={{
@@ -106,21 +117,24 @@ const MyListing = () => {
                 " 2px -2px 6px 0px rgba(0, 0, 0, 0.05), -2px 2px 6px 0px rgba(0, 0, 0, 0.05)",
             }}
           >
-            <ScrollArea>
-              {state.progressState === "setup-listing" && (
-                <ListingDetails onClose={handleOnCloseDrawer} />
-              )}
-              {state.progressState === "setup-showing-availability" && (
-                <ScheduledDate />
-              )}
-              {state.progressState === "setup-showing-instructions" && (
-                <ShowingDetails />
-              )}
-              {state.progressState === "procurement-agreement" && (
-                <ProcurementAgreementListing />
-              )}
-              {state.progressState === "contact-info" && <ListingAgent />}
-            </ScrollArea>
+            {state.progressState === "setup-listing" && (
+              <ListingDetails onClose={handleOnCloseDrawer} />
+            )}
+            {state.progressState === "setup-showing-availability" && (
+              <ScheduledDate />
+            )}
+            {state.progressState === "setup-showing-instructions" && (
+              <ShowingDetails />
+            )}
+            {state.progressState === "procurement-agreement" && (
+              <ProcurementAgreementListing />
+            )}
+            {state.progressState === "contact-info" && <ListingAgent />}
+            {state.progressState === "confirm-company-brokerage" && (
+              <>
+                <ListingAgent />
+              </>
+            )}
           </DrawerContent>
         </Drawer>
       </div>

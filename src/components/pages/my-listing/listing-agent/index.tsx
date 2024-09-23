@@ -1,16 +1,27 @@
+import { useState } from "react";
 import { ReactComponent as ChevronDownIcon } from "../../../../assets/icons/chevron-down.svg";
+import { ReactComponent as ChevronUpIcon } from "../../../../assets/icons/chevron-up.svg";
 import { ReactComponent as MailIcon } from "../../../../assets/icons/mail.svg";
 import { ReactComponent as MessageDotsSquareIcon } from "../../../../assets/icons/message-dots-square.svg";
 import { ReactComponent as PhoneIcon } from "../../../../assets/icons/phone.svg";
 import profileImg from "../../../../assets/images/person.png";
+import SampleCompanyLogo from "../../../../assets/images/sample-company-logo.png";
+import { cn } from "../../../../lib/utils";
+import { useBoundStore } from "../../../../stores/useBoundStores";
 import { Button } from "../../../ui/button";
 import ListingImages from "../listing-details/listing-images";
 
 const ListingAgent = () => {
+  const state = useBoundStore();
+  const [open, setIsOpen] = useState(true);
+
+  const handleOnClickOpenAccordion = () => {
+    setIsOpen((value) => !value);
+  };
   return (
-    <div className="bg-white">
+    <div className="bg-white h-full">
       <div
-        className="mx-0 pt-10 pb-4 px-4 md:mt-5 xl:my-5 md:mx-5 xl:mx-10.5 md:p-5 rounded-xl h-fit !bg-white"
+        className="h-full mx-0 pt-10 pb-4 px-4 md:mt-5 xl:my-5 md:mx-5 xl:mx-10.5 md:p-5 rounded-xl md:h-fit !bg-white"
         style={{
           boxShadow:
             "2px -2px 6px 0px rgba(0, 0, 0, 0.05), -2px 2px 6px 0px rgba(0, 0, 0, 0.05)",
@@ -33,19 +44,23 @@ const ListingAgent = () => {
                 className="rounded-full w-20 h-20"
               />
               <div className="grid gap-1">
-                <p className="text-xl font-bold">Juanita Florencia</p>
-                <p className="text-neutral-500 text-body flex gap-1.5">
+                <p className="text-xl font-bold truncate">Juanita Florencia</p>
+                <div className="flex gap-1.5 truncate">
                   <span>
                     <PhoneIcon />
                   </span>{" "}
-                  305-394-0000
-                </p>
-                <p className="text-neutral-500 text-body flex gap-1.5">
+                  <p className="text-neutral-500 text-body truncate">
+                    305-394-0000
+                  </p>
+                </div>
+                <div className="flex gap-1.5 truncate">
                   <span>
                     <MailIcon />
                   </span>{" "}
-                  juanita@axeresidential.com
-                </p>
+                  <p className="text-neutral-500 text-body truncate">
+                    juanita@axeresidential.com
+                  </p>
+                </div>
               </div>
             </div>
 
@@ -59,10 +74,63 @@ const ListingAgent = () => {
               Message Juanita
             </Button>
           </div>
-          <div className="flex bg-brand-25 p-3 rounded-b-xl items-center">
+          <div
+            className={cn("flex bg-brand-25 p-3 rounded-b-xl items-center", {
+              hidden: state.progressState === "confirm-company-brokerage",
+            })}
+          >
             <div className="rounded-sm bg-skeleton w-5 h-5 mr-2" />
             <div className="flex-1 rounded-2xl bg-skeleton h-3 mr-1" />
             <ChevronDownIcon width={14} height={14} />
+          </div>
+          <div
+            className={cn("bg-brand-25 p-3 rounded-b-xl items-center", {
+              hidden: state.progressState !== "confirm-company-brokerage",
+            })}
+            onClick={handleOnClickOpenAccordion}
+          >
+            <div
+              className={cn("flex items-center w-full h-[22px]", {
+                "mb-2": open,
+              })}
+            >
+              <img
+                src={SampleCompanyLogo}
+                alt="sample-company-logo"
+                className="rounded-sm mr-2"
+                width={20}
+                height={20}
+              />
+              <p className="truncate h-full text-body text-neutral-500 text-ellipsis">
+                21 CENTURY PROPERTIES OF NY AND BUILDERS INC
+              </p>
+              <span className="w-3.5 h-3.5 ml-auto">
+                {open ? (
+                  <ChevronUpIcon width={14} height={14} />
+                ) : (
+                  <ChevronDownIcon width={14} height={14} />
+                )}
+              </span>
+            </div>
+            <div
+              className={cn("grid gap-2", {
+                hidden: !open,
+              })}
+            >
+              <p className="text-body text-neutral-500">Miami Beach, FL</p>
+              <p className="text-body text-neutral-500 flex">
+                <span className="mr-1.5">
+                  <PhoneIcon width={16} height={16} />
+                </span>
+                305-394-7926
+              </p>
+              <p className="text-body text-neutral-500 flex">
+                <span className="mr-1.5">
+                  <MailIcon width={16} height={16} />
+                </span>
+                christine@agentcenturyny.com
+              </p>
+            </div>
           </div>
         </div>
       </div>

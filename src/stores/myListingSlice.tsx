@@ -6,7 +6,8 @@ type TProgressState =
   | "setup-showing-availability"
   | "setup-showing-instructions"
   | "procurement-agreement"
-  | "contact-info";
+  | "contact-info"
+  | "confirm-company-brokerage";
 
 export type TMyListingSlice = {
   progressState: TProgressState;
@@ -18,7 +19,7 @@ export const createMyListingSlice: StateCreator<
   [],
   [["zustand/devtools", never], ["zustand/persist", TMyListingSlice]]
 > = devtools((set) => ({
-  progressState: "setup-listing",
+  progressState: "confirm-company-brokerage",
   setCurrentPage: (progressState) =>
     set((state) => ({ ...state, progressState })),
 }));

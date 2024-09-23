@@ -31,11 +31,13 @@ const ListingImages: FC<TListingImages> = ({ onClose }) => {
   return (
     <div>
       <div className="flex justify-between">
-        <div>
-          <h1 className="text-gray-800 text-heading-2 font-bold xl:text-heading-3">
+        <div className="overflow-hidden">
+          <h1 className="text-gray-800 text-heading-2 font-bold xl:text-heading-3 truncate">
             901 Stillwater Dr
           </h1>
-          <p className="text-body text-gray-650">Miami Beach, FL 33141</p>
+          <p className="text-body text-gray-650 truncate">
+            Miami Beach, FL 33141
+          </p>
         </div>
         <div className="flex gap-3 items-center">
           <div className="p-1 cursor-pointer hover:bg-gray-100 rounded-full">

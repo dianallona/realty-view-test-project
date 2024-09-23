@@ -56,9 +56,9 @@ const ScheduledDate = () => {
   };
 
   return (
-    <div className="bg-white">
+    <div className="bg-white h-full">
       <div
-        className="mx-0 pt-10 px-4 md:mt-5 xl:my-5 md:mx-5 xl:mx-10.5 md:p-5 rounded-xl h-fit !bg-white"
+        className="mx-0 pt-10 px-4 md:mt-5 xl:my-5 md:mx-5 xl:mx-10.5 md:p-5 rounded-xl h-full md:h-fit !bg-white"
         style={{
           boxShadow:
             "2px -2px 6px 0px rgba(0, 0, 0, 0.05), -2px 2px 6px 0px rgba(0, 0, 0, 0.05)",
