@@ -146,11 +146,13 @@ const MyListing = () => {
                 <ShowingDetails onClose={handleOnCloseDrawer} />
               )}
               {state.progressState === "procurement-agreement" && (
-                <ProcurementAgreementListing />
+                <ProcurementAgreementListing onClose={handleOnCloseDrawer} />
               )}
-              {state.progressState === "contact-info" && <ListingAgent />}
+              {state.progressState === "contact-info" && (
+                <ListingAgent onClose={handleOnCloseDrawer} />
+              )}
               {state.progressState === "confirm-company-brokerage" && (
-                <ListingAgent />
+                <ListingAgent onClose={handleOnCloseDrawer} />
               )}
             </ScrollArea>
           </DrawerContent>

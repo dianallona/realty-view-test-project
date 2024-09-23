@@ -1,8 +1,13 @@
+import { FC } from "react";
 import ListingImageLayout from "../../../layout/listing-image-layout";
+import { TListingImages } from "../listing-details/listing-images";
 
-const ProcurementAgreementListing = () => {
+interface TProcurementAgreementListing extends TListingImages {}
+const ProcurementAgreementListing: FC<TProcurementAgreementListing> = ({
+  onClose,
+}) => {
   return (
-    <ListingImageLayout>
+    <ListingImageLayout onClose={onClose}>
       <h2 className="text-gray-800 text-heading font-bold py-3">
         Procurement Agreement
       </h2>

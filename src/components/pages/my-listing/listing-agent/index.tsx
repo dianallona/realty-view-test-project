@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { FC, useState } from "react";
 import { ReactComponent as ChevronDownIcon } from "../../../../assets/icons/chevron-down.svg";
 import { ReactComponent as ChevronUpIcon } from "../../../../assets/icons/chevron-up.svg";
 import { ReactComponent as MailIcon } from "../../../../assets/icons/mail.svg";
@@ -10,8 +10,10 @@ import { cn } from "../../../../lib/utils";
 import { useBoundStore } from "../../../../stores/useBoundStores";
 import ListingImageLayout from "../../../layout/listing-image-layout";
 import { Button } from "../../../ui/button";
+import { TListingImages } from "../listing-details/listing-images";
 
-const ListingAgent = () => {
+interface TListingAgent extends TListingImages {}
+const ListingAgent: FC<TListingAgent> = ({ onClose }) => {
   const state = useBoundStore();
   const [open, setIsOpen] = useState(true);
 
@@ -19,7 +21,7 @@ const ListingAgent = () => {
     setIsOpen((value) => !value);
   };
   return (
-    <ListingImageLayout>
+    <ListingImageLayout onClose={onClose}>
       <div
         className="bg-white rounded-xl my-3"
         style={{
