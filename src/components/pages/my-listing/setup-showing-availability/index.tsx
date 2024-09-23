@@ -56,6 +56,7 @@ const SetupShowingAvailability = () => {
   const handleOnClickBack = () => {
     state.setCurrentPage("setup-listing");
   };
+
   return (
     <Form {...form}>
       <form

@@ -44,10 +44,12 @@ const SetupShowingInstructions = () => {
   });
 
   const handleOnClickBack = () => {
-    state.setCurrentPage("setup-listing");
+    state.setCurrentPage("setup-showing-availability");
   };
 
-  const onSubmit = (values: z.infer<typeof formSchema>) => {};
+  const onSubmit = (values: z.infer<typeof formSchema>) => {
+    state.setCurrentPage("procurement-agreement");
+  };
 
   return (
     <Form {...form}>
@@ -162,7 +164,7 @@ const SetupShowingInstructions = () => {
               )}
             />
           </div>
-          <Button className="!text-body py-2.5 px-4 my-4 w-full">
+          <Button type="submit" className="!text-body py-2.5 px-4 my-4 w-full">
             Next: Procurement Agreement
           </Button>
         </div>

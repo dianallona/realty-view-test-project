@@ -48,11 +48,11 @@ const ConfirmCompanyBrokerage = () => {
   });
 
   const onSubmit = (values: z.infer<typeof formSchema>) => {
-    state.setCurrentPage("contact-info");
+    // state.setCurrentPage("contact-info");
   };
 
   const handleOnClickBack = () => {
-    state.setCurrentPage("setup-showing-instructions");
+    // state.setCurrentPage("setup-showing-instructions");
   };
   return (
     <Form {...form}>

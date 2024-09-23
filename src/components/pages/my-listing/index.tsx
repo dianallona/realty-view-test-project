@@ -1,9 +1,11 @@
 import { useState } from "react";
 import { ReactComponent as ArrowLeftIcon } from "../../../assets/icons/arrow-left.svg";
 import { ReactComponent as EyeLightIcon } from "../../../assets/icons/eye-light.svg";
+import { MY_LISTING_STATE_ORDER } from "../../../constants";
 import { useBoundStore } from "../../../stores/useBoundStores";
 import { Button } from "../../ui/button";
 import { Drawer, DrawerContent, DrawerTrigger } from "../../ui/drawer";
+import { ScrollArea } from "../../ui/scroll-area";
 import ConfirmCompanyBrokerage from "./confirm-company-brokerage";
 import ContactInfo from "./contact-info";
 import ListingAgent from "./listing-agent";
@@ -74,14 +76,30 @@ const MyListing = () => {
           onRelease={handleOnCloseDrawer}
           onOpenChange={setIsOpen}
         >
-          <DrawerTrigger asChild>
+          <DrawerTrigger
+            asChild
+            onClick={(e) => {
+              e.preventDefault();
+            }}
+          >
             <div className="flex items-center justify-between px-5 pt-4">
-              <span>
-                <ArrowLeftIcon width={20} height={20} />
-              </span>
+              {state.progressState !== "setup-listing" && (
+                <span
+                  onClick={() => {
+                    const curr = MY_LISTING_STATE_ORDER.findIndex(
+                      (value) => value === state.progressState
+                    );
+                    const prev = curr === 0 ? 0 : curr - 1;
+
+                    state.setCurrentPage(MY_LISTING_STATE_ORDER[prev]);
+                  }}
+                >
+                  <ArrowLeftIcon width={20} height={20} />
+                </span>
+              )}
               <Button
                 variant="ghost"
-                className="text-body text-gray-500 gap-0.5 !px-0 !py-0"
+                className="text-body text-gray-500 gap-0.5 !px-0 !py-0 ml-auto"
                 onClick={handleOnClickOpenDrawer}
               >
                 Preview Listing
@@ -117,24 +135,24 @@ const MyListing = () => {
                 " 2px -2px 6px 0px rgba(0, 0, 0, 0.05), -2px 2px 6px 0px rgba(0, 0, 0, 0.05)",
             }}
           >
-            {state.progressState === "setup-listing" && (
-              <ListingDetails onClose={handleOnCloseDrawer} />
-            )}
-            {state.progressState === "setup-showing-availability" && (
-              <ScheduledDate />
-            )}
-            {state.progressState === "setup-showing-instructions" && (
-              <ShowingDetails />
-            )}
-            {state.progressState === "procurement-agreement" && (
-              <ProcurementAgreementListing />
-            )}
-            {state.progressState === "contact-info" && <ListingAgent />}
-            {state.progressState === "confirm-company-brokerage" && (
-              <>
+            <ScrollArea>
+              {state.progressState === "setup-listing" && (
+                <ListingDetails onClose={handleOnCloseDrawer} />
+              )}
+              {state.progressState === "setup-showing-availability" && (
+                <ScheduledDate onClose={handleOnCloseDrawer} />
+              )}
+              {state.progressState === "setup-showing-instructions" && (
+                <ShowingDetails onClose={handleOnCloseDrawer} />
+              )}
+              {state.progressState === "procurement-agreement" && (
+                <ProcurementAgreementListing />
+              )}
+              {state.progressState === "contact-info" && <ListingAgent />}
+              {state.progressState === "confirm-company-brokerage" && (
                 <ListingAgent />
-              </>
-            )}
+              )}
+            </ScrollArea>
           </DrawerContent>
         </Drawer>
       </div>

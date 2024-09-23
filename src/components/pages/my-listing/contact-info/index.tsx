@@ -19,11 +19,15 @@ const formSchema = z.object({
   officeNumber: z.string(),
   email: z.string().email(),
 });
+
 const ContactInfo = () => {
   const state = useBoundStore();
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
-    defaultValues: {},
+    defaultValues: {
+      mobile_number: "",
+      officeNumber: "",
+    },
   });
 
   const onSubmit = (values: z.infer<typeof formSchema>) => {
@@ -31,8 +35,9 @@ const ContactInfo = () => {
   };
 
   const handleOnClickBack = () => {
-    state.setCurrentPage("contact-info");
+    state.setCurrentPage("procurement-agreement");
   };
+
   return (
     <Form {...form}>
       <form
