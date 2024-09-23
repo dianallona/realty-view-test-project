@@ -60,7 +60,7 @@ const ConfirmCompanyBrokerage = () => {
         onSubmit={form.handleSubmit(onSubmit)}
         className="px-5 md:px-7 xl:px-16 2xl:px-36 pb-4"
       >
-        <h1 className="flex items-center tracking-[-0.2px] gap-2.5 text-heading-2 xl:text-heading-3 font-bold py-4 md:pt-14 border-b border-gray-100">
+        <h1 className="mb-5 flex items-center tracking-[-0.2px] gap-2.5 text-heading-2 xl:text-heading-3 font-bold py-4 md:pt-14 border-b border-gray-100">
           <span
             className="hidden md:block cursor-pointer hover:scale-110"
             onClick={handleOnClickBack}
