@@ -27,11 +27,11 @@ const ContactInfo = () => {
   });
 
   const onSubmit = (values: z.infer<typeof formSchema>) => {
-    state.setCurrentPage("contact-info");
+    state.setCurrentPage("confirm-company-brokerage");
   };
 
   const handleOnClickBack = () => {
-    state.setCurrentPage("setup-showing-instructions");
+    state.setCurrentPage("contact-info");
   };
   return (
     <Form {...form}>

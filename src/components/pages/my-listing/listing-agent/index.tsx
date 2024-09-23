@@ -84,9 +84,12 @@ const ListingAgent = () => {
             <ChevronDownIcon width={14} height={14} />
           </div>
           <div
-            className={cn("bg-brand-25 p-3 rounded-b-xl items-center", {
-              hidden: state.progressState !== "confirm-company-brokerage",
-            })}
+            className={cn(
+              "bg-brand-25 p-3 rounded-b-xl items-center cursor-pointer group",
+              {
+                hidden: state.progressState !== "confirm-company-brokerage",
+              }
+            )}
             onClick={handleOnClickOpenAccordion}
           >
             <div
@@ -101,7 +104,7 @@ const ListingAgent = () => {
                 width={20}
                 height={20}
               />
-              <p className="truncate h-full text-body text-neutral-500 text-ellipsis">
+              <p className="truncate h-full text-body text-neutral-500 text-ellipsis group-hover:font-bold">
                 21 CENTURY PROPERTIES OF NY AND BUILDERS INC
               </p>
               <span className="w-3.5 h-3.5 ml-auto">
