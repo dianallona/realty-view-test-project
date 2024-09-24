@@ -48,11 +48,11 @@ const ConfirmCompanyBrokerage = () => {
   });
 
   const onSubmit = (values: z.infer<typeof formSchema>) => {
-    // state.setCurrentPage("contact-info");
+    state.setCurrentPage("preview");
   };
 
   const handleOnClickBack = () => {
-    // state.setCurrentPage("setup-showing-instructions");
+    state.setCurrentPage("contact-info");
   };
   return (
     <Form {...form}>
@@ -67,7 +67,7 @@ const ConfirmCompanyBrokerage = () => {
           >
             <ArrowLeftIcon width={20} height={20} />
           </span>
-          Confirm Your Contact Info
+          Confirm Company & Brokerage Details
         </h1>
         <div className="grid gap-4 mb-5">
           <FormField

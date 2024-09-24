@@ -8,8 +8,10 @@ interface TListingDetails extends TListingImages {}
 const ListingDetails: FC<TListingDetails> = ({ onClose }) => {
   return (
     <ListingImageLayout onClose={onClose}>
-      <ListingDetailsCard />
-      <AddressCard />
+      <div className="grid gap-5">
+        <ListingDetailsCard />
+        <AddressCard />
+      </div>
     </ListingImageLayout>
   );
 };

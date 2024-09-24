@@ -2,6 +2,7 @@ import { useState } from "react";
 import { ReactComponent as ArrowLeftIcon } from "../../../assets/icons/arrow-left.svg";
 import { ReactComponent as EyeLightIcon } from "../../../assets/icons/eye-light.svg";
 import { MY_LISTING_STATE_ORDER } from "../../../constants";
+import { cn } from "../../../lib/utils";
 import { useBoundStore } from "../../../stores/useBoundStores";
 import { Button } from "../../ui/button";
 import { Drawer, DrawerContent, DrawerTrigger } from "../../ui/drawer";
@@ -10,6 +11,7 @@ import ConfirmCompanyBrokerage from "./confirm-company-brokerage";
 import ContactInfo from "./contact-info";
 import ListingAgent from "./listing-agent";
 import ListingDetails from "./listing-details";
+import Preview from "./preview";
 import ProcurementAgreement from "./procurement-agreement";
 import ProcurementAgreementListing from "./procurement-agreement-listing";
 import ScheduledDate from "./scheduled-date";
@@ -32,7 +34,11 @@ const MyListing = () => {
 
   return (
     <section className="h-[calc(100vh-61px)] w-full bg-gray-25 overflow-auto">
-      <div className="hidden md:grid md:grid-cols-2 h-full">
+      <div
+        className={cn("hidden md:grid md:grid-cols-2 h-full", {
+          "grid !grid-cols-1": state.progressState === "preview",
+        })}
+      >
         {state.progressState === "setup-listing" && (
           <>
             <SetupListing />
@@ -69,8 +75,13 @@ const MyListing = () => {
             <ListingAgent />
           </>
         )}
+        {state.progressState === "preview" && <Preview />}
       </div>
-      <div className="md:hidden">
+      <div
+        className={cn("md:hidden", {
+          "!hidden": state.progressState === "preview",
+        })}
+      >
         <Drawer
           open={isOpen}
           onRelease={handleOnCloseDrawer}

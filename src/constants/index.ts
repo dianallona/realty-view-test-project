@@ -7,4 +7,5 @@ export const MY_LISTING_STATE_ORDER: TProgressState[] = [
   "procurement-agreement",
   "contact-info",
   "confirm-company-brokerage",
+  "preview",
 ];
