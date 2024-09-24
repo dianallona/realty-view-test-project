@@ -6,9 +6,9 @@ import Navbar from "./navbar";
 
 const MainLayout: FC<PropsWithChildren> = ({ children }) => {
   const state = useBoundStore();
-  const progressIndex =
-    MY_LISTING_STATE_ORDER.findIndex((value) => value === state.progressState) +
-    1;
+  const progressIndex = MY_LISTING_STATE_ORDER.findIndex(
+    (value) => value === state.progressState
+  );
   const progressPercentage =
     (progressIndex / MY_LISTING_STATE_ORDER.length) * 100;
 

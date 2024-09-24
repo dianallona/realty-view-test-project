@@ -70,7 +70,7 @@ const ListingDetailsCard = () => {
                 {value.title}
               </span>
               <p
-                className={cn("w-fit text-gray-800 text-body rounded-md", {
+                className={cn("w-fit text-gray-800 !text-body rounded-md", {
                   "bg-green-100 px-1 py-0.5 text-green-600":
                     value.description === "Active",
                 })}
